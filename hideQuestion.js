@@ -1,7 +1,6 @@
 function hideQuestion(id) {
   $(id)
-    .parent()
-    .parent()
+    .closest('.fullscreen-section')
     .hide()
 }
 
