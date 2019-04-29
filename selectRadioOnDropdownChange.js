@@ -1,5 +1,4 @@
-function selectRadioOnDropdownChange(dropdownId, radioId, bindings) {
-  $(dropdownId).change(function() {
+function onChange(dropdownId, radioId, bindings){
     var value = parseInt($(dropdownId + ' option:selected').val())
     for (var i = 0; i < bindings.length; i++) {
       var binding = bindings[i]
@@ -7,12 +6,20 @@ function selectRadioOnDropdownChange(dropdownId, radioId, bindings) {
         $($(radioId + ' input')[binding.target]).prop('checked', true)
       }
     }
+}
+
+function selectRadioOnDropdownChange(dropdownId, radioId, bindings) {
+  $(dropdownId).change(function() {
+    onChange(dropdownId, radioId, bindings);
   })
 }
 
-// EX...
+// Ex...
 // $(function(){
-//   dropdownSelectStuff("#ctl20_N-5-121890584","#ctl21_N-3-121890585", [
-//       {from: 0, to: 5, target: 1}
-//       ])
+//     var bindings = [
+//         {from: 0, to: 1, target: 0},
+//         {from: 2, to: 3, target: 1}
+//     ];
+//     selectRadioOnDropdownChange('#ctl21_N-5-124409750', '#ctl22_N-3-124409767', bindings);
+//     onChange('#ctl21_N-5-124409750', '#ctl22_N-3-124409767', bindings);
 // })
